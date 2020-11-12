@@ -1,0 +1,36 @@
+.btn{
+    height: 55px;
+    background: $blue;
+    border-radius: 100px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    padding: 0 35px;
+    color: $white;
+    transition: all .3s ease-in-out;
+    @media (min-width: 992px){
+       &:hover{
+        color: $blue;
+        background: transparent;
+     }
+    }
+    &_w{
+        color: $blue;
+        background: $white;
+        @media (min-width: 992px){
+            &:hover{
+             color: $white;
+             background: transparent;
+          }
+         }
+    }
+    
+    @media (max-width: $md1+px){
+        height: 50px;
+        padding: 0 15px;
+    }
+    @media (max-width: $md4+px){
+       height: 40px;
+    }
+}

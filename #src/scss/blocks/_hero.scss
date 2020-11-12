@@ -1,0 +1,458 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 190px 0px 30px 0px;
+    @media (max-width: $md4+px){
+        padding: 120px 0px 30px 0px;
+    }
+    &__body {
+        max-width: 1140px;
+        margin: 0 auto;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0 25px;
+        @media (max-width: $md1+px) {
+            max-width: 970px;
+        }
+        @media (max-width: $md2+px) {
+            max-width: 750px;
+        }
+        @media (max-width: $md3+px) {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+    }
+
+    &__text {
+        margin: 0px 0px 20px 0px;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 32px;
+        color: $white;
+        @media (max-width: $md4+px){
+            font-size: 24px;
+            margin: 0px 0px 10px 0px;
+        }
+    }
+
+    &__subtitle {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: calc(24 / 16);
+        color: $white;
+        @media (max-width: $md4+px){
+            font-size: 14px;
+        }
+    }
+    &__search{
+        background: $white;
+        padding: 0 25px 0 65px;
+        position: relative;
+        margin: 0px 0px 15px 0px;
+        height: 70px;
+        border-radius: 8px;
+        &:before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+           
+            background: url('../img/icons/Search.svg') center no-repeat; 
+            background-size: contain;
+            @media (max-width: $md4+px){
+                width: 24px;
+                height: 24px;
+                left: 8px;
+            }
+        }
+        @media (max-width: $md4+px){
+            height: 56px;
+            padding: 0 20px 0 40px;
+        }
+    }
+    &__input {
+        overflow-x: auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &::-webkit-scrollbar{
+            height: 3px;
+        }
+        &::-webkit-scrollbar-thumb{
+            background: $blue;
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-track{
+            background: transparent;
+        }
+         
+        input{
+            flex: 1 1 auto;
+            height: 100%;
+            background: transparent;
+            min-width: 220px;
+            font-size: 16px;
+            @media (max-width: $md4+px){
+                font-size: 14px;
+            }
+        }
+    }
+    &__searchElement{
+        position: relative;
+        font-weight: 500;
+        font-size: 16px;
+        color: #35424B;
+        height: 40px;
+        padding: 0 40px 0 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $blue;
+        border-radius: 46px;
+        margin: 0px 15px 0px 0px;
+         &:after{
+            content: '';
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: url('../img/icons/Close.svg') center no-repeat;
+            cursor: pointer;
+        }
+        @media (max-width: $md4+px){
+            height: 30px;
+            padding: 0 30px 0 10px;
+            font-size: 14px;
+        }
+    }
+    &__expanded {
+        margin: 0px 0px 30px 0px;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__btn {
+    }
+
+    &__bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-attachment: fixed;
+         &:after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba($color: #000000, $alpha: .25);
+        }
+      }
+}
+.expanded-hero {
+
+    &__link {
+        text-align: center;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        span{
+            font-weight: 500;
+            font-size: 16px;
+            color: $white;
+            border-bottom: 1px dashed;
+        }
+        &._hide{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &__body{
+        display: none;
+    }
+    
+}
+
+.expanded-hero {
+    
+    &__body {
+        
+    }
+}
+.body-expanded {
+
+    &__body {
+        
+        @media (min-width: $md2+px) {
+            display: flex;
+            padding: 30px 0px 0px 0px;
+        }
+    }
+    &__item{
+        flex: 0 0 300px;
+        @media (max-width: $md2+px){
+           margin: 0px 0px 15px 0px;
+        }
+    }
+    &__itemslide{
+        flex: 1 1 auto;
+        padding: 0 30px;
+    }
+    &__descr{
+        font-weight: 500;
+        font-size: 16px;
+        color: $white;
+    }
+    &__slider{
+        height: 8px;
+        border-radius: 10px;
+        background-color: $white;
+        margin: 18px 0px 60px;
+        position: relative;  
+     .noUi-base, .noUi-connects{
+         width: 100%;
+         height: 100%;
+         position: relative;
+    }
+    .noUi-connect, .noUi-origin {
+        width: 10%;
+        height: 10%;
+        will-change: transform;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        transform-origin: 0 0;
+        transform-style: flat;
+    }
+    .noUi-handle{
+        position: absolute;
+        top: -13px;
+        width: 32px;
+        height: 32px;
+        background: $blue;
+        border: 8px solid #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 8px rgba(53, 66, 75, 0.6);
+        border-radius: 50%;
+        right: -11.5px;
+        cursor: pointer; 
+    }
+    .noUi-connect{
+        background-color: $blue;
+        width: 100%;
+        height: 100%;
+    }
+    .noUi-tooltip{
+       
+    }   
+    
+    }
+   
+    &__tooltips{
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        color: $white;
+        white-space: pre;
+        .noUi-tooltip{
+            display: inline;
+        }
+        &_l{
+            right: 0;
+            left: auto;
+        }
+    } 
+    
+    &__data {
+        background: $white;
+        border-radius: 8px;
+        height: 72px;
+        @media (max-width: $md4+px){
+            height: 56px;
+            padding: 0 10px 0 40px;
+        }
+        display: flex;
+        padding: 0 16px 0 56px;
+        align-items: center;
+        position: relative;
+         &:before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            left: 16px;
+            @media (max-width: $md4+px){
+                width: 24px;
+                height: 24px;
+                left: 8px;
+            }
+            background: url('../img/icons/Calendar.svg') center no-repeat;
+        }
+        input{
+            &:focus{
+                color: #111;
+            }
+            font-weight: 500;
+            font-size: 16px;
+            color: #9B9B9B;
+        }
+        
+    }
+
+    &__people {
+        
+        
+    }
+
+    &__count {
+    }
+
+    &__close {
+        text-align: center;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        span{
+            font-weight: 500;
+            font-size: 16px;
+            color: $white;
+            border-bottom: 1px dashed;
+        }
+    }
+}
+
+
+.count-expanded {
+
+    &__text {
+    }
+}
+
+
+.people-expanded {
+    position: relative; 
+    
+    &__title {
+        font-weight: 500;
+        font-size: 16px;
+        color: #9B9B9B;
+        background: $white;
+        border-radius: 8px;
+        height: 72px;
+        @media (max-width: $md4+px){
+            height: 56px;
+            padding: 0 10px 0 40px;
+        }
+        display: flex;
+        padding: 0 16px 0 56px;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+         &:before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            left: 16px;
+            @media (max-width: $md4+px){
+                width: 24px;
+                height: 24px;
+                left: 8px;
+            }
+            background: url('../img/icons/People.svg') center no-repeat;
+        }
+         &:after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 8px;
+            right: 16px;
+            background: url('../img/icons/arrow.svg') center no-repeat;
+        }
+    }
+
+    &__body {
+        position: absolute;
+        display: none;
+        background: $white;
+        margin: -10px 0px 0px 0px;
+        border-radius: 8px;
+        width: 100%;
+        padding: 10px 16px 30px 16px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px 0px 16px 0px;
+        &:last-child{
+            margin: 0px 0px 0px 0px;
+        }
+    }
+
+    &__type {
+        font-weight: 500;
+        font-size: 16px;
+        color: #35424B;
+    }
+
+    &__count {
+    }
+
+    &__minus {
+    }
+
+    &__plus {
+    }
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    input{
+        width: 56px;
+        height: 24px;
+        font-weight: 500;
+        font-size: 16px;
+        text-align: center;
+        padding: 0 10px;
+        color: #35424B;
+    }
+    &__button{
+        width: 32px;
+        height: 32px;
+        border: 2px solid $blue;
+        border-radius: 50%;
+        &_minus{
+            background: url('../img/icons/minus.svg') center no-repeat;
+            margin: 0px 8px 0px 0px;
+        }
+        &_plus{
+            background: url('../img/icons/plus.svg') center no-repeat;
+        }
+    }
+}

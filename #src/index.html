@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('_head.html',{
+	"title":"Touristo"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('_header.html',{})
+			<main class="page">
+				<section class="hero">
+					<div class="hero__body">
+						<div class="hero__text">
+							<h1 class="hero__title">Куди відправимось?</h1>
+							<h2 class="hero__subtitle">Ви можете здійснити пошук по декільком напр’ямкам одночасно</h2>
+						</div>
+						<div class="hero__search">
+						<div class="hero__input">
+							<input type="text" placeholder="Країна, місто, регіон або готель">
+						</div>
+						</div>
+						<div class="hero__expanded expanded-hero">
+							<div class="expanded-hero__body body-expanded">
+								<div class="body-expanded__body">
+								<div class="body-expanded__data body-expanded__item">
+									<input type="text" placeholder="Місяць або дата">
+								</div>
+								<div class="body-expanded__itemslide">
+									<div class="body-expanded__descr">Тривалість</div>
+								<div class="body-expanded__slider" data-from="від " data-to="до " data-day=" днів">
+
+								</div>
+							</div>
+									<div class="body-expanded__people body-expanded__item people-expanded">
+										<div class="people-expanded__title">Кількість подорожуючих</div>
+										<div class="people-expanded__body">
+											<div class="people-expanded__item">
+												<div class="people-expanded__type">Дорослих</div>
+												<div class="people-expanded__quantity quantity">
+												<input type="text" value="0" class="people-expanded__count">
+												<div class="people-expanded__minus quantity__button quantity__button_minus"></div>
+												<div class="people-expanded__plus quantity__button quantity__button_plus"></div>
+											</div>
+											</div>
+											<div class="people-expanded__item">
+												<div class="people-expanded__type">Дітей</div>
+												<div class="people-expanded__quantity quantity">
+												<input type="text" value="0" class="people-expanded__count">
+												<div class="people-expanded__minus quantity__button quantity__button_minus"></div>
+												<div class="people-expanded__plus quantity__button quantity__button_plus"></div>
+											</div>
+											</div>	
+										</div>
+									</div>
+								</div>
+								<div class="body-expanded__close"><span>Сховати</span></div>
+							</div>
+							<div class="expanded-hero__link"><span>Розширений пошук</span></div>
+						</div>
+						<div class="hero__button">
+							<a href="#" class="hero__btn btn btn_w">Знайти подорожі</a>
+						</div>
+					</div>
+					<div class="hero__bg _ibg"><img src="./img/heroBg.png" alt="heroBg"></div>
+				</section>
+			</main>
+			@@include('_footer.html',{})
+		</div>
+		@@include('_popup.html',{})
+		@@include('_js.html',{})
+	</body>
+</html>
