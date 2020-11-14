@@ -118,6 +118,7 @@
         border: 2px solid $blue;
         border-radius: 46px;
         margin: 0px 15px 0px 0px;
+        white-space: nowrap;
          &:after{
             content: '';
             position: absolute;
@@ -447,6 +448,7 @@
         height: 32px;
         border: 2px solid $blue;
         border-radius: 50%;
+        cursor: pointer;
         &_minus{
             background: url('../img/icons/minus.svg') center no-repeat;
             margin: 0px 8px 0px 0px;

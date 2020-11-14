@@ -92,4 +92,124 @@ document.addEventListener('DOMContentLoaded', () => {
         _slideToggle(peopleBody);
     });
 
+
+
+    let catalogSwiper;
+    let sliderCatalog = document.querySelector(".catalog__items");
+
+    function mobileSlider() {
+    if (window.innerWidth <= 992 && sliderCatalog.dataset.mobile == "false") {
+        catalogSwiper = new Swiper(".catalog__items", {
+        slidesPerView: 1,
+        pagination: {
+            el: '.catalog__info',
+            type: 'fraction'
+          },
+        breakpoints: {
+            320: {
+            slidesPerView: 1,
+            },
+            480: {
+            slidesPerView: 2,
+            },
+            767: {
+            slidesPerView: 3,
+            }
+            
+        },
+        });
+        sliderCatalog.dataset.mobile = "true";
+    }
+    if (window.innerWidth > 992) {
+        sliderCatalog.dataset.mobile = "false";
+        // catalogSwiper.destroy();
+    }
+    }
+    mobileSlider();
+    window.addEventListener("resize", mobileSlider);
+
+
+    class Code {
+        constructor(options){
+            this.size = options.size;
+            this.code = options.code;
+            this.onMinSize = options.onMinSize;
+            this.heightResize = options.heightResize;
+        }
+    }
+    class OnResize extends Code {
+        constructor(options){
+            super({
+                size: options.size,
+                code: options.code,
+                onMinSize: (options.onMinSize == undefined) ? false: options.onMinSize,
+                heightResize: (options.heightResize == undefined) ? false: options.heightResize,
+            })
+            let isSize = false;
+            console.log(this.heightResize);
+            const mobileCode = () =>{
+
+                const minHeight = () => {
+                        if(this.size < window.innerHeight && isSize === false){
+                            this.code();
+                            isSize = true;
+                        }else if(this.size > window.innerHeight && isSize === true){
+                            isSize = false;
+                        }
+                };
+                const minWidth = () => {
+                    if(this.size < window.innerWidth && isSize === false){
+                        this.code();
+                        isSize = true;
+                    }else if(this.size > window.innerWidth && isSize === true){
+                        isSize = false;
+                    }
+                };
+                const maxHeight = () => {
+                    if(this.size > window.innerHeight && isSize === false){
+                        this.code();
+                        isSize = true;
+                    }else if(this.size < window.innerHeight && isSize === true){
+                        isSize = false;
+                    }
+                };
+                const maxWidth = () => {
+                    if(this.size > window.innerWidth && isSize === false){
+                        this.code();
+                        isSize = true;
+                    }else if(this.size < window.innerWidth && isSize === true){
+                        isSize = false;
+                    }
+                };
+
+
+                if(this.onMinSize == true){
+                    if(this.heightResize == true){
+                        minHeight();
+                    }else{
+                        minWidth();
+                    }
+                }else{
+                    if(this.heightResize == true){
+                        maxHeight();
+                    }else{
+                        maxWidth();
+                    }
+                }
+            }
+            mobileCode();
+            window.addEventListener("resize", mobileCode);
+        }
+    }
+    
+    const codeTabs = () =>{
+        console.log(767);
+    }
+    const mobileTabs = new OnResize({
+        size: 767,
+        code: codeTabs,
+        // onMinSize: true,
+        // heightResize: true,
+    });
+    
 });

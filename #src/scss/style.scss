@@ -5,6 +5,7 @@
 @import "./base/zeroing";
 @import "./base/ibg"; 
 @import "./base/burger"; 
+@import "./libs/swiper-bundle.min";
 // @import "./base/select";
 
 // blocks
@@ -12,6 +13,8 @@
 @import "./blocks/footer";
 @import "./blocks/btn";
 @import "./blocks/hero";
+@import "./blocks/catalog";
+
 
 // global styles
 ._container {
@@ -42,7 +45,18 @@
 .page {
   flex: 1 1 auto;
 }
-
+body{
+	&::-webkit-scrollbar{
+		width: 16px;
+	}
+	&::-webkit-scrollbar-thumb{
+		background: $blue;
+		border-radius: 8px;
+	}
+	&::-webkit-scrollbar-track{
+		background: transparent;
+	}
+}
 body.hidden{
   overflow: hidden;
 }

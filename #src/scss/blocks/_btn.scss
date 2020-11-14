@@ -9,6 +9,7 @@
     padding: 0 35px;
     color: $white;
     transition: all .3s ease-in-out;
+    cursor: pointer;
     @media (min-width: 992px){
        &:hover{
         color: $blue;
