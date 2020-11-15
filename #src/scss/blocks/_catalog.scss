@@ -6,12 +6,25 @@
     &__content {
     }
 
+    &__block{
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        transition: all .3s ease-in-out;
+        width: 100%;
+        &._active{
+            opacity: 1;
+            visibility: visible;
+            position: static;
+        }
+    }
+
     &__title {
         margin: 0px 0px 25px 0px;
     }
 
     &__body {
-        
+        position: relative;
     }
 
     &__tabs {

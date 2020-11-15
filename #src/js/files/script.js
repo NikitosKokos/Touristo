@@ -1,11 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    // @ @include("swiper-bundle.min.js");
-    // @@include("some.js");
-    // @@include('burger.js');
-    // @ @include("spoller.js",{});
-    // @ @include("select.js",{});
-    // @ @include("tabs.js",{});
     
     const searchInputWrapper = document.querySelector('.hero__input');
     const searchInput = document.querySelector('.hero__input input');
@@ -94,122 +88,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    let catalogSwiper;
-    let sliderCatalog = document.querySelector(".catalog__items");
+    
+    let sliderCatalog = document.querySelectorAll(".catalog__block");
 
     function mobileSlider() {
-    if (window.innerWidth <= 992 && sliderCatalog.dataset.mobile == "false") {
-        catalogSwiper = new Swiper(".catalog__items", {
-        slidesPerView: 1,
-        pagination: {
-            el: '.catalog__info',
-            type: 'fraction'
-          },
-        breakpoints: {
-            320: {
+        sliderCatalog.forEach(element => {
+          if (window.innerWidth <= 992 && element.querySelector('.catalog__items').dataset.mobile == "false") {
+            new Swiper(element.querySelector('.catalog__items'), {
             slidesPerView: 1,
+            pagination: {
+                el: element.querySelector('.catalog__info'),
+                type: 'fraction'
             },
-            480: {
-            slidesPerView: 2,
+            breakpoints: {
+                320: {
+                slidesPerView: 1,
+                },
+                480: {
+                slidesPerView: 2,
+                },
+                767: {
+                slidesPerView: 3,
+                }
+                
             },
-            767: {
-            slidesPerView: 3,
-            }
-            
-        },
-        });
-        sliderCatalog.dataset.mobile = "true";
-    }
-    if (window.innerWidth > 992) {
-        sliderCatalog.dataset.mobile = "false";
-        // catalogSwiper.destroy();
-    }
+            });
+            element.querySelector('.catalog__items').dataset.mobile = "true";
+        }
+        if (window.innerWidth > 992) {
+            element.querySelector('.catalog__items').dataset.mobile = "false";
+            // element.querySelector('.catalog__items').destroy();
+        }
+      });  
+    
     }
     mobileSlider();
     window.addEventListener("resize", mobileSlider);
 
 
-    class Code {
-        constructor(options){
-            this.size = options.size;
-            this.code = options.code;
-            this.onMinSize = options.onMinSize;
-            this.heightResize = options.heightResize;
-        }
-    }
-    class OnResize extends Code {
-        constructor(options){
-            super({
-                size: options.size,
-                code: options.code,
-                onMinSize: (options.onMinSize == undefined) ? false: options.onMinSize,
-                heightResize: (options.heightResize == undefined) ? false: options.heightResize,
-            })
-            let isSize = false;
-            console.log(this.heightResize);
-            const mobileCode = () =>{
-
-                const minHeight = () => {
-                        if(this.size < window.innerHeight && isSize === false){
-                            this.code();
-                            isSize = true;
-                        }else if(this.size > window.innerHeight && isSize === true){
-                            isSize = false;
-                        }
-                };
-                const minWidth = () => {
-                    if(this.size < window.innerWidth && isSize === false){
-                        this.code();
-                        isSize = true;
-                    }else if(this.size > window.innerWidth && isSize === true){
-                        isSize = false;
-                    }
-                };
-                const maxHeight = () => {
-                    if(this.size > window.innerHeight && isSize === false){
-                        this.code();
-                        isSize = true;
-                    }else if(this.size < window.innerHeight && isSize === true){
-                        isSize = false;
-                    }
-                };
-                const maxWidth = () => {
-                    if(this.size > window.innerWidth && isSize === false){
-                        this.code();
-                        isSize = true;
-                    }else if(this.size < window.innerWidth && isSize === true){
-                        isSize = false;
-                    }
-                };
-
-
-                if(this.onMinSize == true){
-                    if(this.heightResize == true){
-                        minHeight();
-                    }else{
-                        minWidth();
-                    }
-                }else{
-                    if(this.heightResize == true){
-                        maxHeight();
-                    }else{
-                        maxWidth();
-                    }
-                }
-            }
-            mobileCode();
-            window.addEventListener("resize", mobileCode);
-        }
-    }
-    
-    const codeTabs = () =>{
-        console.log(767);
-    }
     const mobileTabs = new OnResize({
         size: 767,
-        code: codeTabs,
-        // onMinSize: true,
-        // heightResize: true,
+        code: () => {
+            let tabParent = document.querySelector('.subscription__body');
+            let tabsSubscription = document.querySelectorAll('.subscription__item'),
+            tabsContentSubscription = document.querySelectorAll('.subscription__block');
+
+            function hideTabsContentSubscription(){
+            tabsContentSubscription.forEach(item => {
+                item.classList.remove('_active');
+            });
+
+            tabsSubscription.forEach(item => {
+                item.classList.remove('_active');
+            });
+            };
+
+            let showTabsContentSubscription = function (i = 0){
+                tabsContentSubscription[i].classList.add('_active');
+                tabsSubscription[i].classList.add('_active');
+            }
+
+            hideTabsContentSubscription();
+            showTabsContentSubscription(0);
+
+            tabParent.addEventListener('click', (event) => {
+            const targetElement = event.target;
+            
+            if( targetElement && targetElement.classList.contains('subscription__item') || targetElement && targetElement.closest('.subscription__item')){
+                hideTabsContentSubscription();
+                tabsSubscription.forEach((item, i)=>{
+                    if(targetElement.closest('.subscription__item') == item){
+                        showTabsContentSubscription(i);
+                    }
+                    });
+            }
+            });
+        
+        },
     });
     
 });
