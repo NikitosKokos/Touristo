@@ -128,10 +128,36 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileSlider();
     window.addEventListener("resize", mobileSlider);
 
+    new Swiper('.reviews__slider', {
+        loop: true,
+        // slidesPerView: 3,
+
+        navigation: {
+          nextEl: '.reviews__next',
+          prevEl: '.reviews__prev',
+        },
+        pagination: {
+            el: document.querySelector('.reviews__info'),
+            type: 'bullets',
+            clickable: true,
+            },
+        breakpoints: {
+            320: {
+            slidesPerView: 1,
+            },
+            480: {
+            slidesPerView: 2,
+            },
+            992: {
+            slidesPerView: 3,
+            }
+            }
+      });
 
     const mobileTabs = new OnResize({
         size: 767,
         code: () => {
+            // tabs
             let tabParent = document.querySelector('.subscription__body');
             let tabsSubscription = document.querySelectorAll('.subscription__item'),
             tabsContentSubscription = document.querySelectorAll('.subscription__block');
@@ -166,7 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
             }
             });
-        
+            // slider
+            new Swiper(document.querySelector('.offer__body'), {
+                slidesPerView: 1,
+                pagination: {
+                    el: document.querySelector('.offer__info'),
+                    type: 'bullets',
+                    clickable: true,
+                },
+                   
+                });
         },
     });
     
